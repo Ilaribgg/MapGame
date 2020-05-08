@@ -5,6 +5,7 @@ import * as SQLite from 'expo-sqlite';
 const db = SQLite.openDatabase('mapdb.db')
 
 export default function AddCity(props) {
+    const {navigate} = props.navigation;
     const[text, setText] = useState('');
     const[amount, setAmount] = useState('');
     const[city, setCity] = useState([]);
@@ -12,13 +13,13 @@ export default function AddCity(props) {
         'Helsinki,Finland', 'Oslo,Norway', 'Berliini,Germany'
        ]
 
-       useEffect(()=> {
+    useEffect(()=> {
         db.transaction(tx => {
-          tx.executeSql('create table if not exists list (id integer primary key not null, amount text, text text);');
+          tx.executeSql('create table if not exists list (text text,amount text);');
     
         });
         updateList();
-      }, []);
+      }, [])
 ;
     const add = () => {
         db.transaction(tx=> {
@@ -58,6 +59,7 @@ return (
     <TextInput style = {{width: 200, borderColor: 'gray', borderWidth:2}} onChangeText={text => setText(text)} value={text}/>
     <TextInput style = {{width: 200, borderColor: 'gray', borderWidth:2}} onChangeText={amount => setAmount(amount)} value={amount}/>    
     <Button color="black" title= "Add" onPress = {add}/>
+    <Button onPress={()=> navigate('Game', {city})} title = "Map" />
     <FlatList 
         style={{marginLeft : "5%"}}
         keyExtractor={item => item.id.toString()} 
