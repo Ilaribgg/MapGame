@@ -9,7 +9,7 @@ import {Ionicons, MaterialIcons, MaterialCommunityIcons} from '@expo/vector-icon
 const AppNavigator = createBottomTabNavigator({
   Game: {screen: MapScreen},
   Add: {screen: AddCity},
-  Hiscore: {screen: ScoreScreen},
+  Highscore: {screen: ScoreScreen},
     
 },
 
@@ -22,7 +22,7 @@ defaultNavigationOptions:({navigation}) => ({
       return <MaterialCommunityIcons name ='gamepad-variant' size={25} color={tintColor}/>;
     } else if (routeName === 'Add') {
       return <MaterialIcons name='playlist-add' size={25} color={tintColor}/>;
-    } else if (routeName === 'Hiscore'){
+    } else if (routeName === 'Highscore'){
       return <Ionicons name='ios-list' size={25} color={tintColor}/>;
     }
   }

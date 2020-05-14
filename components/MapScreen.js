@@ -108,13 +108,13 @@ const getLocation = async() => {
       let r = answer + correctCountry + teksti + count
       setData([...data, {key:r}]);
       setCount(1);
-    } else if(count < 5) {
+    } else if(count < 6) {
       setCount(count +1)
       alert("Wrong. You've used " + count + " tries out of 5!");
-    } if (count == 5) {
+    } if (count == 6) {
       setCount(1);
       setData('');
-      alert("You've used " + count + " tries out of 5! Hiscore has been reset!");
+      alert("You've used 5 tries out of 5! Highscore has been reset!");
     }
   }
     return (
@@ -138,7 +138,7 @@ const getLocation = async() => {
         <Button raised icon={{name: 'search'}} onPress={search} title='Search'/>
         <Button raised icon={{name: 'done'}} onPress={rightAnswer} title='Answer'/>
         <Button raised icon={{name: 'update'}} onPress={updateList} title='Update'/>
-        <Button raised icon={{name: 'list'}}onPress={()=> navigate('Hiscore', {data})} title = "Hiscore" />
+        <Button raised icon={{name: 'list'}}onPress={()=> navigate('Highscore', {data})} title = "Highscore" />
     </ThemeProvider>
     </View>
     </View>

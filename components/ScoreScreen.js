@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, ScrollView} from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import { ListItem } from 'react-native-elements';
 
 export default function ScoreScreen(props) {
@@ -33,13 +33,13 @@ const styles = StyleSheet.create({
       flex: 1,
       marginTop: 23,
     },
+    titleText: {
+      fontSize: 18,
+      fontWeight: "bold"
+  },
     container2:{
       marginTop: 20,
       backgroundColor: '#808080'
-    },
-    titleText: {
-      fontSize: 15,
-      fontWeight: "bold",
     },
     listcontainer: {
       flexDirection: "column",
