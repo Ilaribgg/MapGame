@@ -55,7 +55,7 @@ export default function AddCity(props) {
 return (
     
     <View style={styles.container}>
-        <Input placeholder='Type city & country' style = {{width: 200, color: 'black'}} onChangeText={text => setText(text)} value={text}/>    
+        <Input placeholder={'Type city & country'} style = {{width: 200, color: 'black'}} onChangeText={text => setText(text)} value={text}/>    
     <View style={styles.buttonContainer}>
     <ThemeProvider theme={theme}>
         <Button raised icon={{name: 'add'}} onPress = {add} title ='Add' onChangeText={text=> setText('')}/>
@@ -63,7 +63,7 @@ return (
     </ThemeProvider>
     </View>
     <View style={styles.container2}>
-    <ScrollView style={styles.listcontainer}>
+    <ScrollView style={styles.list}>
         {city.map((item, id)=>{
             return (
                 <ListItem
@@ -78,7 +78,7 @@ return (
                   containerStyle={{ backgroundColor: "#808080" }}
                   rightTitle="Delete"
                   rightTitleStyle={{ color: "blue", fontSize: 12 }}
-                  onLongPress={() => {deleteItem(item.id)}}
+                  onPress={()=> {deleteItem(item.id)}}
                   bottomDivider
                 />
             )
@@ -99,7 +99,7 @@ return (
             marginTop: 20,
             backgroundColor: '#808080'
         },
-        listcontainer: {
+        list: {
             flexDirection: "column",
             backgroundColor: '#808080',
           },
@@ -111,15 +111,6 @@ return (
             fontSize: 18,
             fontWeight: "bold",
             color: '#0000ff'
-        },
-        list: {
-            padding: 8,
-            borderBottomColor: "black",
-            borderBottomWidth: 1,
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'row'
         },
         buttonContainer: {
             flexDirection: 'row', 
