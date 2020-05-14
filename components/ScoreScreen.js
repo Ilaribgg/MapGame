@@ -1,44 +1,48 @@
 import React, {useState} from 'react';
-import { FlatList, StyleSheet, TextInput, Text, View, Image, Alert, ImageBackground } from 'react-native';
-
+import { StyleSheet, View, ScrollView} from 'react-native';
+import { ListItem } from 'react-native-elements';
 
 export default function ScoreScreen(props) {
-    const {params} = props.navigation.state;
-    const[data, setData] = useState([]);
-    const[text, setText] = useState('');
-    const listSeparator = () => {
-      return (
-        <View
-          style={{
-            height: 1,
-            width: "80%",
-            backgroundColor: "#CED0CE",
-            marginLeft: "10%",
-            marginTop: "10%"
-          }}
-        />
-      );
-    };
-
+    const{params} = props.navigation.state;
+    const {navigate} = props.navigation;
     return (
-        <View style={styles.container}>
-        <FlatList 
-          style={{marginLeft : "5%"}}
-          keyExtractor={item => item.id} 
-    renderItem={({item}) => <View>
-      <Text>Correct answer: {item.key}</Text>
-      </View>}
-          ItemSeparatorComponent={listSeparator}
-          data={params.data} 
-        />  
-        </View>
+      <View style={styles.container}>
+      <ScrollView style={styles.listcontainer}>
+        {params.data.map((item, key)=>{
+          return (
+            <ListItem
+            key={key}
+            title={item.key}
+            titleStyle={{
+                marginTop: 0,
+                fontSize: 18,
+                fontWeight: "bold",
+                color: "black",
+              }}
+              containerStyle={{backgroundColor: "#808080"}}
+              bottomDivider
+            />
+        )
+    })}
+  </ScrollView>
+  </View>
           );
       };
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+      marginTop: 23,
     },
+    container2:{
+      marginTop: 20,
+      backgroundColor: '#808080'
+    },
+    titleText: {
+      fontSize: 15,
+      fontWeight: "bold",
+    },
+    listcontainer: {
+      flexDirection: "column",
+      backgroundColor: '#808080',
+    }
   });

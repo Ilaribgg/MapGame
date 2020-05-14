@@ -1,15 +1,32 @@
 import React, {useState} from 'react';
-import{createStackNavigator} from'react-navigation-stack'
 import {createAppContainer} from 'react-navigation';
 import{ createBottomTabNavigator} from'react-navigation-tabs';
 import ScoreScreen from './components/ScoreScreen';
 import MapScreen from './components/MapScreen';
 import AddCity from './components/AddCity';
+import {Ionicons, MaterialIcons, MaterialCommunityIcons} from '@expo/vector-icons';
 
 const AppNavigator = createBottomTabNavigator({
   Game: {screen: MapScreen},
+  Add: {screen: AddCity},
   Hiscore: {screen: ScoreScreen},
-  Add: {screen: AddCity}
+    
+},
+
+
+{
+defaultNavigationOptions:({navigation}) => ({
+  tabBarIcon: ({focused, tintColor}) => {
+    const {routeName} = navigation.state;
+    if (routeName === 'Game') {
+      return <MaterialCommunityIcons name ='gamepad-variant' size={25} color={tintColor}/>;
+    } else if (routeName === 'Add') {
+      return <MaterialIcons name='playlist-add' size={25} color={tintColor}/>;
+    } else if (routeName === 'Hiscore'){
+      return <Ionicons name='ios-list' size={25} color={tintColor}/>;
+    }
+  }
+})
 });
 
 const AppContainer = createAppContainer(AppNavigator);
