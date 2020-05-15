@@ -8,7 +8,6 @@ export default function AddCity(props) {
     const {navigate} = props.navigation;
     const[text, setText] = useState('');
     const[city, setCity] = useState([]);
-
     const theme = {
         Button: {
             color: 'black',

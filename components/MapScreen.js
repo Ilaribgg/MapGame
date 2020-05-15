@@ -108,10 +108,10 @@ const getLocation = async() => {
       let r = answer + correctCountry + teksti + count
       setData([...data, {key:r}]);
       setCount(1);
-    } else if(count < 6) {
+    } else if(count <= 4) {
       setCount(count +1)
       alert("Wrong. You've used " + count + " tries out of 5!");
-    } if (count == 6) {
+    } if (count == 5) {
       setCount(1);
       setData('');
       alert("You've used 5 tries out of 5! Highscore has been reset!");
